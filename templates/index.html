@@ -1,0 +1,26 @@
+{% extends 'base.html' %}   <!--this is extension of base.html-->
+
+{% block content %}
+<h2>Book List</h2>   <!--in form of table , h2 means heading-->
+<table>
+    <tr>
+        <th>ID</th>   <!--th means heading for column-->
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Actions</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book[0] }}</td>
+        <td>{{ book[1] }}</td>
+        <td>{{ book[2] }}</td>
+        <td>{{ book[3] }}</td>
+        <td>
+            <a href="{{ url_for('update_book', id=book[0]) }}">Edit</a> |  <!--for every book there is edit and delete button-->
+            <a href="{{ url_for('delete_book', id=book[0]) }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

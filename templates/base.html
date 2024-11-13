@@ -1,0 +1,33 @@
+<!--main layout of webpage-->
+<!-- we will create UI of page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--width would be automatically be of device width, initial scale would be normal 1.0-->
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  <!--css file used for styling, color and effects-->
+</head>
+<body>
+    <header>
+        <h1>Library Management System</h1>
+        <nav>   <!--create menu which will have two buttons as added below side by side-->
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('add_book') }}">Add Book</a>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}  <!-- this func will get all the flashed messages as mentioned in app.py-->
+        {% if messages %}
+            <ul>    <!--unordered list: message coming one below the another-->
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}  <!--this will have content of index.html-->
+    </main>
+</body>
+</html>

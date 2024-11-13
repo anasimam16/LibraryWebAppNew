@@ -1,0 +1,17 @@
+{% extends 'base.html' %}   <!--this is extension of base.html-->
+
+{% block content %}
+<h2>Add a New Book</h2>
+<form method="POST">   <!--Post submit all the submission which entered in the input box-->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>  <!--id is given to uniquely identify the fields-->
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="year">Year:</label>
+    <input type="number" id="year" name="year" required>
+
+    <button type="submit">Add Book</button>
+</form>
+{% endblock %}
